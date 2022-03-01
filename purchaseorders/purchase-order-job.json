@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "PurchaseOrderJob",
+  "job": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "Id": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "CustomerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "OrderDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "PromisedDeliveryDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "ShippingAddress": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#/definitions/PostalAddress"
+          }
+        ]
+      },
+      "InvoiceAddress": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#/definitions/PostalAddress"
+          }
+        ]
+      },
+      "TotalAmount": {
+        "type": "number",
+        "format": "decimal"
+      },
+      "TaxAmount": {
+        "type": "number",
+        "format": "decimal"
+      },
+      "Items": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "$ref": "#/definitions/Positions"
+        }
+      }
+    }
+  },
+  "ack" : {
+
+  },
+  "deliverynotification" : {
+
+  },
+  "acceptancenotification"  : {
+
+  },
+  "definitions": {
+    "PostalAddress": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "AddressLine1": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "AddressLine2": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "City": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "PostalCode": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Region": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Country": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "Positions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "OrderItemId": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "CatalogId": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Description": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "UnitCount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Unit": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Price": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "TaxRate": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Discount": {
+          "type": "number",
+          "format": "decimal"
+        }
+      }
+    }
+  }
+}

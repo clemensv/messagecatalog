@@ -1,0 +1,54 @@
+{
+    "specversion": "0.1",
+    "$schema": "http://cloudevents.io/schemas/messagecatalog.json",
+    "groups": {
+        "purchase-order-messages-content": {
+            "format": "json-schema",
+            "description": "JSON message content definitions for purchase order processing.",
+            "createdtimeutc" : "2022-03-01T14:30:37+0000",
+            "updatedtimeutc" : "2022-03-01T14:30:37+0000",
+            "schemas": {
+                "purchase-order-job" : {
+                    "authority" : "contoso.com",
+                    "createdtimeutc" : "2022-03-01T14:30:37+0000",
+                    "updatedtimeutc" : "2022-03-01T14:30:37+0000",
+                    "versions" : {
+                        "1" : {
+                            "$ref" : "purchase-order-job.json#/job"
+                        }
+                    }
+                },
+                "purchase-order-ack" : {
+                    "authority" : "contoso.com",
+                    "createdtimeutc" : "2022-03-01T14:30:37+0000",
+                    "updatedtimeutc" : "2022-03-01T14:30:37+0000",
+                    "versions" : {
+                        "1" : {
+                            "$ref" : "purchase-order-job.json#/ack"
+                        }
+                    }
+                },
+                "purchase-order-deliverynotification" : {
+                    "authority" : "contoso.com",
+                    "createdtimeutc" : "2022-03-01T14:30:37+0000",
+                    "updatedtimeutc" : "2022-03-01T14:30:37+0000",
+                    "versions" : {
+                        "1" : {
+                            "$ref" : "purchase-order-job.json#/deliverynotification"
+                        }
+                    }
+                },
+                "purchase-order-acceptancenotification" : {
+                    "authority" : "contoso.com",
+                    "createdtimeutc" : "2022-03-01T14:30:37+0000",
+                    "updatedtimeutc" : "2022-03-01T14:30:37+0000",
+                    "versions" : {
+                        "1" : {
+                            "$ref" : "purchase-order-job.json#/acceptancenotification"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

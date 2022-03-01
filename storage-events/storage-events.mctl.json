@@ -1,0 +1,351 @@
+{
+  "specversion": "0.1",
+  "groups": {
+    "Microsoft.Storage.Blobs": {
+      "id": "Microsoft.Storage.Blobs",
+      "authority": "microsoft.com",
+      "format": "CloudEvents",
+      "description": "This message group defines events for the Azure Blob Storage Service",
+      "definitions": {
+        "Microsoft.Storage.BlobCreated": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.BlobCreated"
+        },
+        "Microsoft.Storage.BlobDeleted": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.BlobDeleted"
+        },
+        "Microsoft.Storage.BlobTierChanged": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.BlobTierChanged"
+        },
+        "Microsoft.Storage.AsyncOperationInitiated": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.AsyncOperationInitiated"
+        }
+      }
+    },
+    "Microsoft.Storage.DataLakeGen2": {
+      "id": "Microsoft.Storage.DataLakeGen2",
+      "authority": "microsoft.com",
+      "format": "CloudEvents",
+      "description": "This message group defines events for the Azure Storage DataLake Gen2 Service",
+      "definitions": {
+        "Microsoft.Storage.BlobCreated": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.BlobCreated"
+        },
+        "Microsoft.Storage.BlobDeleted": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.BlobDeleted"
+        },
+        "Microsoft.Storage.BlobRenamed": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.BlobRenamed"
+        },
+        "Microsoft.Storage.DirectoryCreated": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.DirectoryCreated"
+        },
+        "Microsoft.Storage.DirectoryDeleted": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.DirectoryCreated"
+        },
+        "Microsoft.Storage.DirectoryRenamed": {
+          "$ref": "#/groups/Microsoft.Storage/definitions/Microsoft.Storage.DirectoryCreated"
+        }
+      }
+    },
+    "Microsoft.Storage": {
+      "id": "Microsoft.Storage",
+      "authority": "microsoft.com",
+      "format": "CloudEvents",
+      "description": "This message group defines common events for the Azure Storage Services",
+      "definitions": {
+        "Microsoft.Storage.BlobCreated": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Raised when a new blob has been created",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.BlobCreated",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobCreatedEventData",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "/{container}/{filepath}",
+                "description": "Path of the blob that has been newly created.",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.BlobDeleted": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Raised when a new blob has been deleted",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.BlobDeleted",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobDeletedEventData",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "/{container}/{filepath}",
+                "description": "Path of the blob that has been deleted.",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.DirectoryCreated": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Raised when a new directory has been created",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.DirectoryCreated",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobCreatedEventData",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "/{container}/{filepath}",
+                "description": "Path of the directory that has been created.",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.DirectoryDeleted": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Raised when a new directory has been deleted",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.DirectoryDeleted",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageDirectoryDeletedEventData",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "/{container}/{filepath}",
+                "description": "Path of the directory that has been deleted.",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.BlobRenamed": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Raised when a blob has been renamed",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.BlobRenamed",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobRenamedEventData",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "/{container}/{filepath}",
+                "description": "Path of the blob that has been renamed. The old file path is in the `sourceUrl` data field of the event payload.",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.DirectoryRenamed": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Raised when a directory has been renamed",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.DirectoryRenamed",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageDirectoryRenamedEventData",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "/{container}/{filepath}",
+                "description": "Path of the directory that has been renamed. The old file path is in the `sourceUrl` data field of the event payload.",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.BlobTierChanged": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Triggered when the blob access tier is changed. Specifically, when clients call the Set Blob Tier operation that is available in the Blob REST API, this event is triggered after the tier change completes.",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.BlobTierChanged",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobTierChangedEventData",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "/{container}/{filepath}",
+                "description": "Path of the blob whose tier changed",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.BlobInventoryPolicyCompleted": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "The BlobInventoryPolicyCompleted event is generated when the inventory run completes for a rule. This event also occurs if the inventory run fails with a user error before it starts to run. For example, an invalid policy, or an error that occurs when a destination container is not present will trigger the event.",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.BlobInventoryPolicyCompleted",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/BlobInventoryPolicyCompleted",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              },
+              "subject": {
+                "value": "BlobDataManagement/BlobInventory",
+                "description": "Identifies the inventory",
+                "required": true
+              }
+            }
+          }
+        },
+        "Microsoft.Storage.AsyncOperationInitiated": {
+          "authority": "microsoft.com",
+          "version": 1,
+          "description": "Triggered when an operation involving moving or copying of data from the archive to hot or cool tiers is initiated. Specifically, this event is triggered either when clients call the Set Blob Tier API to move a blob from archive tier to hot or cool tier, or when clients call the Copy Blob API to copy data from a blob in the archive tier to a blob in the hot or cool tier.",
+          "definition": {
+            "attributes": {
+              "id": {
+                "required": true
+              },
+              "time": {
+                "required": true
+              },
+              "type": {
+                "value": "Microsoft.Storage.AsyncOperationInitiated",
+                "required": "true"
+              },
+              "dataschema": {
+                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/AsyncOperationInitiated",
+                "required": true
+              },
+              "source": {
+                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "description": "Azure resource path to the storage account that is raising this event.",
+                "required": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

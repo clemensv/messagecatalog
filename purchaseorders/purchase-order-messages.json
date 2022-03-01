@@ -1,0 +1,152 @@
+{
+  "specversion": "0.1",
+  "$schema": "http://cloudevents.io/schemas/messagecatalog.json",
+  "groups": {
+    "purchase-order-messages": {
+      "format": "AMQP",
+      "description": "Messages for purchase order processing.",
+      "definitions": {
+        "purchase-order": {
+          "authority": "contoso.com",
+          "description": "Purchase order document",
+          "version": 1,
+          "relations": [
+            {
+              "to": "#/groups/purchase-order-messages/definitions/purchase-order-acknowledgement",
+              "type": "reply",
+              "via": "correlationid"
+            },
+            {
+              "to": "#/groups/purchase-order-messages/definitions/delivery-notification",
+              "type": "reply",
+              "via": "correlationid"
+            }
+          ],
+          "definition": {
+            "properties": {
+              "message-id": {
+                "required": true
+              },
+              "subject": {
+                "value": "contoso.purchase-order",
+                "required": true
+              },
+              "contenttype": {
+                "value": "application/json",
+                "required": true
+              }
+            },
+            "applicationproperties": {
+              "purchase-order-id": {
+                "description": "identifier of the PO this message relates to",
+                "required ": "true"
+              }
+            },
+            "applicationdata": {
+              "dataschema": "purchase-order-job.json#/job"
+            }
+          }
+        },
+        "purchase-order-acknowledgement": {
+          "authority": "contoso.com",
+          "version": 1,
+          "definition": {
+            "properties": {
+              "subject": {
+                "value": "contoso.purchase-order-acknowledgement",
+                "required": true
+              },
+              "contenttype": {
+                "value": "application/json",
+                "required": true
+              },
+              "correlationid": {
+                "required": true
+              }
+            },
+            "applicationproperties": {
+              "purchase-order-id": {
+                "description": "identifier of the PO this message relates to",
+                "required ": "true"
+              }
+            },
+            "applicationdata": {
+              "dataschema": "purchase-order-job.json#/ack"
+            }
+          }
+        },
+        "delivery-notification": {
+          "authority": "contoso.com",
+          "version": 1,
+          "relations": [
+            {
+              "to": "#/groups/purchase-order-messages/definitions/acceptance-notification",
+              "type": "reply",
+              "via": "correlationid"
+            }
+          ],
+          "definition": {
+            "properties": {
+              "subject": {
+                "value": "contoso.delivery-notification",
+                "required": true
+              },
+              "contenttype": {
+                "value": "application/json",
+                "required": true
+              },
+              "correlationid": {
+                "required": true
+              }
+            },
+            "applicationproperties": {
+              "purchase-order-id": {
+                "description": "identifier of the PO this message relates to",
+                "required ": "true"
+              },
+              "delivery-notification": {
+                "description": "identifier of the delivery notification this message relates to",
+                "required ": "true"
+              }
+            },
+            "applicationdata": {
+              "dataschema": "purchase-order-job.json#/deliverynotification"
+            }
+          }
+        },
+        "acceptance-notification": {
+          "authority": "contoso.com",
+          "version": 1,
+          "definition": {
+            "properties": {
+              "subject": {
+                "value": "contoso.acceptance-notification",
+                "required": true
+              },
+              "contenttype": {
+                "value": "application/json",
+                "required": true
+              },
+              "correlationid": {
+                "required": true
+              }
+            },
+            "applicationproperties": {
+              "purchase-order-id": {
+                "description": "identifier of the PO this message relates to",
+                "required ": "true"
+              },
+              "delivery-notification": {
+                "description": "identifier of the delivery notification this message relates to",
+                "required ": "true"
+              }
+            },
+            "applicationdata": {
+              "dataschema": "purchase-order-job.json#/acceptancenotification"
+            }
+          }
+        }
+      }
+    }
+  }
+}

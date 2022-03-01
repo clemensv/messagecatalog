@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="https://cncf.io/messagecatalog/2022-02">
+    <specversion>0.1</specversion>
+    <groups>
+        <group id="purchase-order-messages">
+            <format>AMQP</format>
+            <description>Messages for purchase order processing.</description>
+            <definitions>
+                <message id="purchase-order">
+                    <authority>contoso.com</authority>
+                    <description>Purchase order document</description>
+                    <version>1</version>
+                    <definition>
+                        <properties>
+                            <message-id>
+                                <required>true</required>
+                            </message-id>
+                            <subject>
+                                <value>contoso.purchase-order</value>
+                                <required>true</required>
+                            </subject>
+                            <contenttype>
+                                <value>application/json</value>
+                                <required>true</required>
+                            </contenttype>
+                        </properties>
+                        <applicationproperties>
+                            <property id="purchase-order-id">
+                                <description>identifier of the PO this message relates to</description>
+                                <required>true</required>
+                            </property>
+                        </applicationproperties>
+                        <applicationdata>
+                            <dataschema>purchase-order-job.xsd#/job</dataschema>
+                        </applicationdata>
+                    </definition>
+                </message>
+                <message id="purchase-order-acknowledgement">
+                    <authority>contoso.com</authority>
+                    <version>1</version>
+                    <relatedto>#/groups/purchase-order-queue-messages/definitions/purchase-order</relatedto>
+                    <relation>reply</relation>
+                    <relatedvia>correlationid</relatedvia>
+                    <definition>
+                        <properties>
+                            <subject>
+                                <value>contoso.purchase-order-acknowledgement</value>
+                                <required>true</required>
+                            </subject>
+                            <contenttype>
+                                <value>application/json</value>
+                                <required>true</required>
+                            </contenttype>
+                            <correlationid>
+                                <required>true</required>
+                            </correlationid>
+                        </properties>
+                        <applicationproperties>
+                            <property id="purchase-order-id">
+                                <description>identifier of the PO this message relates to</description>
+                                <required>true</required>
+                            </property>
+                        </applicationproperties>
+                        <applicationdata>
+                            <dataschema>purchase-order-job.xsd#/ack</dataschema>
+                        </applicationdata>
+                    </definition>
+                </message>
+                <message id="delivery-notification">
+                    <authority>contoso.com</authority>
+                    <version>1</version>
+                    <relatedto>#/groups/purchase-order-queue-messages/definitions/purchase-order</relatedto>
+                    <relation>reply</relation>
+                    <relatedvia>correlationid</relatedvia>
+                    <definition>
+                        <properties>
+                            <subject>
+                                <value>contoso.delivery-notification</value>
+                                <required>true</required>
+                            </subject>
+                            <contenttype>
+                                <value>application/json</value>
+                                <required>true</required>
+                            </contenttype>
+                            <correlationid>
+                                <required>true</required>
+                            </correlationid>
+                        </properties>
+                        <applicationproperties>
+                            <property id="purchase-order-id">
+                                <description>identifier of the PO this message relates to</description>
+                                <required>true</required>
+                            </property>
+                            <property id="delivery-notification">
+                                <description>identifier of the delivery notification this message relates to</description>
+                                <required>true</required>
+                            </property>
+                        </applicationproperties>
+                        <applicationdata>
+                            <dataschema>purchase-order-job.xsd#/deliverynotification</dataschema>
+                        </applicationdata>
+                    </definition>
+                </message>
+                <message id="acceptance-notification">
+                    <authority>contoso.com</authority>
+                    <version>1</version>
+                    <relatedto>#/groups/purchase-order-queue-messages/definitions/delivery-notification</relatedto>
+                    <relation>reply</relation>
+                    <relatedvia>correlationid</relatedvia>
+                    <definition>
+                        <properties>
+                            <subject>
+                                <value>contoso.acceptance-notification</value>
+                                <required>true</required>
+                            </subject>
+                            <contenttype>
+                                <value>application/json</value>
+                                <required>true</required>
+                            </contenttype>
+                            <correlationid>
+                                <required>true</required>
+                            </correlationid>
+                        </properties>
+                        <applicationproperties>
+                            <property id="purchase-order-id">
+                                <description>identifier of the PO this message relates to</description>
+                                <required>true</required>
+                            </property>
+                            <property id="delivery-notification">
+                                <description>identifier of the delivery notification this message relates to</description>
+                                <required>true</required>
+                            </property>
+                        </applicationproperties>
+                        <applicationdata>
+                            <dataschema>purchase-order-job.xsd#/acceptancenotification</dataschema>
+                        </applicationdata>
+                    </definition>
+                </message>
+            </definitions>
+        </group>
+    </groups>
+</catalog>
