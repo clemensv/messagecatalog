@@ -1,0 +1,118 @@
+{
+    "specversion": "0.1",
+    "$schema": "http://cloudevents.io/schemas/messagecatalog.json",
+    "groups": {
+        "StorageEventData": {
+            "format": "json-schema",
+            "authority": "azure.com",
+            "description": "JSON message content definitions for storage events.",
+            "schemas": {
+                "StorageBlobCreatedEventData": {
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageBlobCreatedEventData"
+                        },
+                        "2": {
+                            "$ref": "storage-event-payloads-2022-03-01.json#/definitions/StorageBlobCreatedEventData"
+                        }
+                    }
+                },
+                "StorageBlobDeletedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageBlobDeletedEventData"
+                        },
+                        "2": {
+                            "$ref": "storage-event-payloads-2022-03-01.json#/definitions/StorageBlobDeletedEventData"
+                        }
+                    }
+                },
+                "StorageDirectoryCreatedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageDirectoryCreatedEventData"
+                        },
+                        "2": {
+                            "$ref": "storage-event-payloads-2022-03-01.json#/definitions/StorageBlobDeletedEventData"
+                        }
+                    }
+                },
+                "StorageDirectoryDeletedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageDirectoryDeletedEventData"
+                        },
+                        "2": {
+                            "$ref": "storage-event-payloads-2022-03-01.json#/definitions/StorageBlobDeletedEventData"
+                        }
+                    }
+                },
+                "StorageBlobRenamedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageBlobRenamedEventData"
+                        },
+                        "2": {
+                            "$ref": "storage-event-payloads-2022-03-01.json#/definitions/StorageBlobRenamedEventData"
+                        }
+                    }
+                },
+                "StorageDirectoryRenamedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageDirectoryRenamedEventData"
+                        },
+                        "2": {
+                            "$ref": "storage-event-payloads-2022-03-01.json#/definitions/StorageDirectoryRenamedEventData"
+                        }
+                    }
+                },
+                "StorageLifecyclePolicyCompletedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageLifecyclePolicyCompletedEventData"
+                        }
+                    }
+                },
+                "StorageLifecyclePolicyActionSummaryDetail": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageLifecyclePolicyActionSummaryDetail"
+                        }
+                    }
+                },
+                "StorageBlobTierChangedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageBlobTierChangedEventData"
+                        }
+                    }
+                },
+                "StorageAsyncOperationInitiatedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageAsyncOperationInitiatedEventData"
+                        }
+                    }
+                },
+                "StorageBlobInventoryPolicyCompletedEventData": {
+                    "authority": "azure.com",
+                    "versions": {
+                        "1": {
+                            "$ref": "storage-event-payloads-2018-01-01.json#/definitions/StorageBlobInventoryPolicyCompletedEventData"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+{
+    "specversion": "0.1",
+    "$schema": "http://cloudevents.io/schemas/discovery.json",
+    "endpoints": {
+        "subscriptions::041abda7-3870-4275-ae24-6bf4c5300523::resourceGroups::clemensv42::providers::Microsoft.Storage::storageAccounts::clemensv90": {
+            "type": "subscriber",
+            "protocol": "https",
+            "description": "Azure Storage V2 Container (clemensv90)",
+            "docsurl": "https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage",
+            "subscriptionurl": "https://weu.grid.azure/subscriptions/041abda7-3870-4275-ae24-6bf4c5300523/resourceGroups/clemensv42/providers/Microsoft.Storage/storageAccounts/clemensv90/subscriptions",
+            "authscope": "https://azure.com/subscriptions/041abda7-3870-4275-ae24-6bf4c5300523",
+            "events": {
+                "Microsoft.Storage.BlobCreated": {
+                    "authority": "microsoft.com",
+                    "version": 1,
+                    "description": "Raised when a new blob has been created",
+                    "definition": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobCreated",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobCreatedEventData",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the blob that has been newly created.",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.BlobDeleted": {
+                    "authority": "microsoft.com",
+                    "version": 1,
+                    "description": "Raised when a new blob has been deleted",
+                    "definition": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobDeleted",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobDeletedEventData",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the blob that has been deleted.",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.BlobTierChanged": {
+                    "authority": "microsoft.com",
+                    "version": 1,
+                    "description": "Triggered when the blob access tier is changed. Specifically, when clients call the Set Blob Tier operation that is available in the Blob REST API, this event is triggered after the tier change completes.",
+                    "definition": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobTierChanged",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobTierChangedEventData",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the blob whose tier changed",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.AsyncOperationInitiated": {
+                    "authority": "microsoft.com",
+                    "version": 1,
+                    "description": "Triggered when an operation involving moving or copying of data from the archive to hot or cool tiers is initiated. Specifically, this event is triggered either when clients call the Set Blob Tier API to move a blob from archive tier to hot or cool tier, or when clients call the Copy Blob API to copy data from a blob in the archive tier to a blob in the hot or cool tier.",
+                    "definition": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.AsyncOperationInitiated",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/AsyncOperationInitiated",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

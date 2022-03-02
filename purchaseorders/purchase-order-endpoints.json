@@ -1,0 +1,47 @@
+{
+    "specversion": "0.1",
+    "$schema": "http://cloudevents.io/schemas/discovery.json",
+    "endpoints": {
+        "com-contoso-edi-weu-amqp-producer-westeurope" : {
+            "type" : "producer",
+            "protocol" : "amqps",
+            "description" : "Producer endpoint where purchase orders and confirmations are submitted",
+            "docsurl" : "http://docs.contoso.com/edi/purchasing",
+            "endpointurl" : "amqps://weu.edi.contoso.com/po-ingress",
+            "events" :{
+                "$ref" : "purchase-order-messages.json#/groups/purchase-order-messages"
+            }
+        },  
+        "com-contoso-edi-weu-amqp-subscriber-westeurope" : {
+            "type" : "subscriber",
+            "protocol" : "https",
+            "description" : "Subscriber endpoint where purchase order correspondence can be subscribed to",
+            "docsurl" : "http://docs.contoso.com/edi/purchasing",
+            "endpointurl" : "https://weu.edi.contoso.com/po-subscribers",
+            "events" :{
+                "$ref" : "purchase-order-messages.json#/groups/purchase-order-messages"
+            }
+        },
+        "com-contoso-edi-weu-amqp-fabrikam-consumer-westeurope" : {
+            "type" : "consumer",
+            "protocol" : "amqps",
+            "description" : "Consumer endpoint where purchase order correspondence with Fabrikam is placed",
+            "docsurl" : "http://docs.contoso.com/edi/purchasing",
+            "endpointurl" : "amqps://weu.edi.contoso.com/po-egress-fabrikam",
+            "events" :{
+                "$ref" : "purchase-order-messages.json#/groups/purchase-order-messages"
+            }
+        },
+        "com-contoso-edi-weu-amqp-litware-consumer-westeurope" : {
+            "type" : "consumer",
+            "protocol" : "amqps",
+            "description" : "Consumer endpoint where purchase order correspondence with Litware is placed",
+            "docsurl" : "http://docs.contoso.com/edi/purchasing",
+            "endpointurl" : "amqps://weu.edi.contoso.com/po-egress-litware",
+            "events" :{
+                "$ref" : "purchase-order-messages.json#/groups/purchase-order-messages"
+            }
+        }
+
+    }
+}

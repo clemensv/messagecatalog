@@ -1,0 +1,17 @@
+{
+    "specversion": "0.1",
+    "$schema": "http://cloudevents.io/schemas/discovery.json",
+    "endpoints": {
+        "subscriptions::041abda7-3870-4275-ae24-6bf4c5300523::resourceGroups::clemensv42::providers::Microsoft.Storage::storageAccounts::clemensv90": {
+            "type" : "subscriber",
+            "protocol" : "https",
+            "description": "Azure Storage V2 Container (clemensv90)",
+            "docsurl": "https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage",
+            "subscriptionurl": "https://weu.grid.azure/subscriptions/041abda7-3870-4275-ae24-6bf4c5300523/resourceGroups/clemensv42/providers/Microsoft.Storage/storageAccounts/clemensv90/subscriptions",
+            "authscope": "https://azure.com/subscriptions/041abda7-3870-4275-ae24-6bf4c5300523",
+            "events": {
+                "$ref": "storage-events.mctl.json#/groups/Microsoft.Storage.Blobs"
+            }
+        }
+    }
+}

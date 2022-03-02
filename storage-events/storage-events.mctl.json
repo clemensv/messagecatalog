@@ -70,7 +70,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobCreatedEventData",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobCreatedEventData",
                 "required": true
               },
               "source": {
@@ -103,7 +103,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobDeletedEventData",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobDeletedEventData",
                 "required": true
               },
               "source": {
@@ -136,7 +136,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobCreatedEventData",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobCreatedEventData",
                 "required": true
               },
               "source": {
@@ -169,7 +169,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageDirectoryDeletedEventData",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageDirectoryDeletedEventData",
                 "required": true
               },
               "source": {
@@ -202,7 +202,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobRenamedEventData",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobRenamedEventData",
                 "required": true
               },
               "source": {
@@ -235,7 +235,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageDirectoryRenamedEventData",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageDirectoryRenamedEventData",
                 "required": true
               },
               "source": {
@@ -268,7 +268,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/StorageBlobTierChangedEventData",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobTierChangedEventData",
                 "required": true
               },
               "source": {
@@ -301,7 +301,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/BlobInventoryPolicyCompleted",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/BlobInventoryPolicyCompleted",
                 "required": true
               },
               "source": {
@@ -334,7 +334,7 @@
                 "required": "true"
               },
               "dataschema": {
-                "value": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/eventgrid/data-plane/Microsoft.Storage/stable/2018-01-01/Storage.json#/definitions/AsyncOperationInitiated",
+                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/AsyncOperationInitiated",
                 "required": true
               },
               "source": {
