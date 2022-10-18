@@ -1,0 +1,43 @@
+[
+    {
+        "usage": "subscriber",
+        "config": {
+            "protocol": "https | ...",
+            "endpoint": "URL",
+            "options": {}
+        },
+        {
+            "usage": "consumer",
+            "config": {
+                "protocol": "amqp",
+                "endpoint": "amqps://myhost.example.com/nodename",
+                "authorization" : {
+
+                },
+                "options": {
+                    "distribution-mode": "copy|move",
+                    "capabilities" : ["", ""]
+                }
+            }
+        },
+        {
+            "usage": "consumer",
+            "config": {
+                "protocol": "amqp",
+                "endpoint": "URL",
+                "options": {
+                    "consumerGroup": "group1",
+                    "distributionMode": "move" 	# or "copy"?
+                }
+            }
+        },
+        {
+            "usage": "producer",
+            "config": {
+                "protocol": "https | ...",
+                "endpoint": "URL",
+                "options": { ...
+                }
+            }
+        }
+    ]
