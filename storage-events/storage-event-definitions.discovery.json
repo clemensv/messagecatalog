@@ -1,0 +1,312 @@
+{
+    "specversion": "0.3",
+    "groups": {
+        "Microsoft.Storage": {
+            "id": "Microsoft.Storage",
+            "name": "Microsoft.Storage",
+            "definitions": {
+                "Microsoft.Storage.BlobCreated": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Raised when a new blob has been created",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstorageblobcreated-event-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobCreated",
+                                "required": "true"
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the blob that has been newly created.",
+                                "required": true
+                            }
+                        }
+                    },
+                    "schemaurl": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobCreatedEventData"
+                },
+                "Microsoft.Storage.BlobDeleted": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Raised when a new blob has been deleted",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstorageblobdeleted-event-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobDeleted",
+                                "required": "true"
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the blob that has been deleted.",
+                                "required": true
+                            }
+                        }
+                    },
+                    "schemaurl" : "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobDeletedEventData"
+
+                },
+                "Microsoft.Storage.DirectoryCreated": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Raised when a new directory has been created",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstoragedirectorycreated-event-data-lake-storage-gen2-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.DirectoryCreated",
+                                "required": "true"
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the directory that has been created.",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.DirectoryDeleted": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Raised when a new directory has been deleted",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstoragedirectorydeleted-event-data-lake-storage-gen2-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.DirectoryDeleted",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageDirectoryDeletedEventData",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the directory that has been deleted.",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.BlobRenamed": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Raised when a blob has been renamed",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstorageblobrenamed-event-data-lake-storage-gen2-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobRenamed",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobRenamedEventData",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the blob that has been renamed. The old file path is in the `sourceUrl` data field of the event payload.",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.DirectoryRenamed": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Raised when a directory has been renamed",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstoragedirectoryrenamed-event-data-lake-storage-gen2-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.DirectoryRenamed",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageDirectoryRenamedEventData",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the directory that has been renamed. The old file path is in the `sourceUrl` data field of the event payload.",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.BlobTierChanged": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Triggered when the blob access tier is changed. Specifically, when clients call the Set Blob Tier operation that is available in the Blob REST API, this event is triggered after the tier change completes.",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstorageblobtierchanged-event-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobTierChanged",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/StorageBlobTierChangedEventData",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "/{container}/{filepath}",
+                                "description": "Path of the blob whose tier changed",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.BlobInventoryPolicyCompleted": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "The BlobInventoryPolicyCompleted event is generated when the inventory run completes for a rule. This event also occurs if the inventory run fails with a user error before it starts to run. For example, an invalid policy, or an error that occurs when a destination container is not present will trigger the event.",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstorageblobinventorypolicycompleted-event-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.BlobInventoryPolicyCompleted",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/BlobInventoryPolicyCompleted",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            },
+                            "subject": {
+                                "value": "BlobDataManagement/BlobInventory",
+                                "description": "Identifies the inventory",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "Microsoft.Storage.AsyncOperationInitiated": {
+                    "origin": "microsoft.com",
+                    "epoch": 1,
+                    "description": "Triggered when an operation involving moving or copying of data from the archive to hot or cool tiers is initiated. Specifically, this event is triggered either when clients call the Set Blob Tier API to move a blob from archive tier to hot or cool tier, or when clients call the Copy Blob API to copy data from a blob in the archive tier to a blob in the hot or cool tier.",
+                    "docs": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema#microsoftstorageasyncoperationinitiated-event-1",
+                    "format": "CloudEvents/1.0",
+                    "metadata": {
+                        "attributes": {
+                            "id": {
+                                "required": true
+                            },
+                            "time": {
+                                "required": true
+                            },
+                            "type": {
+                                "value": "Microsoft.Storage.AsyncOperationInitiated",
+                                "required": "true"
+                            },
+                            "dataschema": {
+                                "value": "storage-event-schemas.json#/groups/StorageEventData/schemas/AsyncOperationInitiated",
+                                "required": true
+                            },
+                            "source": {
+                                "value": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                                "description": "Azure resource path to the storage account that is raising this event.",
+                                "required": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
