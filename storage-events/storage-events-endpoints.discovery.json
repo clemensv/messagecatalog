@@ -1,0 +1,32 @@
+{
+    "specversion": "0.3",
+    "endpoints": {
+        "clemensv90" : {
+            {
+                "id": "clemensv90",
+                "name": "STRING",
+                "self": "URI",
+                "epoch": UINT,
+                "origin": "URI" ?
+                "description": "STRING", ?
+                "tags": { "STRING": "STRING", ... } ?
+                "docs": "URL", ?
+            
+                "deprecated": { ... }, ?
+                "channel", "STRING", ?
+                "authscope": "URI", ?
+            
+                "usage": "subscriber",
+                "config": {
+                    "protocol": "https-arm",
+                    "endpoints": "/subscriptions/041abda7-3870-4275-ae24-6bf4c5300523/resourceGroups/clemensv1/providers/Microsoft.EventGrid/systemTopics/foo/overview",
+                    "options": { ... }, ?
+                    "strict": true|false ?
+                }, ?
+            
+                "groups": [ "storage-event-definitions.json#groups/Microsoft.Storage" ]
+            }
+        }
+
+    }
+}

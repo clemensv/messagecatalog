@@ -1,6 +1,6 @@
 ﻿using System.Net.Mime;
 
-namespace Microsoft.Storage
+namespace CloudNative.CloudEvents
 {
     // This interface is implemented by code-generated, strongly-typed classes for
     // schemas of specific serialization media types

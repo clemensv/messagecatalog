@@ -2,7 +2,7 @@
 
 namespace CloudNative.CloudEvents.Discovery.Samples
 {
-    public class StorageEventGridDispatcher
+    public class StorageEventDispatcher
     {
         public event EventHandler<BlobCreatedEvent> BlobCreatedEventHandler;
         public event EventHandler<BlobDeletedEvent> BlobDeletedEventHandler;

@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.Mime;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
-namespace Microsoft.Storage
+namespace CloudNative.CloudEvents
 {
     public class JsonSchemaSerializable : ISchemaSerializable
     {

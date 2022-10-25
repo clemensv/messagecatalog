@@ -1,22 +1,26 @@
-﻿using Azure.Messaging.EventGrid;
-using Azure;
+﻿using Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Messaging.EventGrid.CloudNativeCloudEvents;
+
 using Microsoft.Storage;
+using Microsoft.Azure.Amqp;
+using Azure.Messaging.ServiceBus;
+using Microsoft.VisualBasic;
+using CloudNative.CloudEvents.NewtonsoftJson;
+using Azure.Identity;
 
 namespace CloudNative.CloudEvents.Discovery.Samples
 {
+
+
     internal class Program
     {
         public async static Task Main(string[] args)
         {
-            EventGridPublisherClient client = new EventGridPublisherClient(
-        new Uri(""),
-        new AzureKeyCredential(""));
+            CloudEventFormatter formatter = new JsonEventFormatter();
 
             var ev = new Microsoft.Storage.BlobCreatedEvent(
                     new Uri("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup/providers/Microsoft.Storage/storageAccounts/myaccount", UriKind.Relative),
@@ -33,7 +37,47 @@ namespace CloudNative.CloudEvents.Discovery.Samples
                         Url = "https://my-storage-account.blob.core.windows.net/testcontainer/new-file.txt",
                         Sequencer = "00000000000004420000000000028963",
                     });
-            await client.SendCloudNativeCloudEventAsync(ev.ToCloudEvent());
+
+            ServiceBusClient client = new ServiceBusClient("clemensvams.servicebus.windows.net", new DefaultAzureCredential());
+
+
+            var fooReceiver = client.CreateProcessor("foo", new ServiceBusProcessorOptions { AutoCompleteMessages = false});
+            var dispatcher = new StorageEventDispatcher();
+            dispatcher.BlobCreatedEventHandler += Dispatcher_BlobCreatedEventHandler;
+            fooReceiver.ProcessMessageAsync += async (arg) =>
+            {
+                try
+                {
+                    dispatcher.Dispatch(arg.Message.ToCloudEvent());
+                    await arg.CompleteMessageAsync(arg.Message);
+                }
+                catch(ArgumentException ex)
+                {
+                    await arg.DeadLetterMessageAsync(arg.Message, ex.Message);
+                }
+            };
+            fooReceiver.ProcessErrorAsync += FooReceiver_ProcessErrorAsync;
+            await fooReceiver.StartProcessingAsync();
+
+
+            var fooSender = client.CreateSender("foo");
+            var structuredEventPublisher = new StorageEventPublisher<ServiceBusPublisher>(new ServiceBusPublisher(fooSender), ContentMode.Structured, formatter);
+            await structuredEventPublisher.SendBlobCreatedEventAsync(ev);
+            var binaryEventPublisher = new StorageEventPublisher<ServiceBusPublisher>(new ServiceBusPublisher(fooSender), ContentMode.Binary, formatter);
+            await binaryEventPublisher.SendBlobCreatedEventAsync(ev);
+                       
+
+            Console.ReadLine();
+        }
+
+        private static async Task FooReceiver_ProcessErrorAsync(ProcessErrorEventArgs arg)
+        {
+            
+        }
+
+        private static void Dispatcher_BlobCreatedEventHandler(object sender, BlobCreatedEvent e)
+        {
+            Console.WriteLine(e.Data.Api);
         }
     }
 }

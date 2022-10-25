@@ -1,4 +1,5 @@
-﻿using Microsoft.Storage;
+﻿using CloudNative.CloudEvents.NewtonsoftJson;
+using Microsoft.Storage;
 using System.ComponentModel.DataAnnotations;
 
 namespace CloudNative.CloudEvents.Discovery.Samples
@@ -56,11 +57,18 @@ namespace CloudNative.CloudEvents.Discovery.Samples
             Data.Deserialize(CloudEvent.DataContentType, CloudEvent.DataSchema, receivedCloudEvent.Data);
         }
 
-        public CloudEvent ToCloudEvent()
+        public CloudEvent ToCloudEvent(ContentMode contentMode, CloudEventFormatter formatter)
         {
-            MemoryStream memoryStream = new MemoryStream();
-            Data.Serialize(memoryStream);
-            CloudEvent.Data = memoryStream.ToArray();
+            if (!(formatter is JsonEventFormatter && Data is JsonSchemaSerializable))
+            {
+                MemoryStream memoryStream = new MemoryStream();
+                Data.Serialize(memoryStream);
+                CloudEvent.Data = memoryStream.ToArray();
+            }
+            else
+            {
+                CloudEvent.Data = (T)Data;
+            }
             CloudEvent.DataContentType = Data.ContentType.ToString();
             CloudEvent.DataSchema = Data.DataSchema;
             return CloudEvent;
